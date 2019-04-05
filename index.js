@@ -104,9 +104,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                     if (responses[0].queryResult && responses[0].queryResult.action == "handle-delivery-order"){
                         let message_text
                         if (responses[0].queryResult.parameters.fields.menu.stringValue){
-                            message_text = `毎度！${responses[0].queryResult.parameters.fields.menu.stringValue}ね。どちらにお届けしましょ？`;
-                        } else {
-                            message_text = `毎度！ご注文は？`;
+                            message_text = `ごみっていうなーー！！`
                         }
                         return bot.replyMessage(event.replyToken, {
                             type: "text",
