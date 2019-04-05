@@ -114,6 +114,16 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                 })
             );
         }
+        if (event.type == "message" && event.message.type == "text"){
+            // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
+            if (event.message.text == "こんにちは"){
+                // replyMessage()で返信し、そのプロミスをevents_processedに追加。
+                events_processed.push(bot.replyMessage(event.replyToken, {
+                    type: "text",
+                    text: "これはこれは"
+                }));
+            }
+        }
     });
 
     // すべてのイベント処理が終了したら何個のイベントが処理されたか出力。
