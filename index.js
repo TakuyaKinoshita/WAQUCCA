@@ -101,7 +101,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                         }
                     }
                 }).then((responses) => {
-                    if (responses[0].queryResult && responses[0].queryResult.action == "handle-delivery-order"){
+                    if (responses[0].queryResult && responses[0].queryResult.action == "gomicounter"){
                         let message_text = 'ゴミっていうなー';
                         // if (responses[0].queryResult.parameters.fields.gomi.stringValue){
                         //     message_text = `ごみっていうなーー！！`;
