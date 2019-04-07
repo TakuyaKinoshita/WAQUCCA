@@ -53,8 +53,9 @@
 // モジュールのインポート
 const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
-const dialogflow = require("dialogflow");
+const { dialogflow } = require("actions-on-google");
 
+const apps = dialogflow({ debug: true });
 // -----------------------------------------------------------------------------
 // パラメータ設定
 const line_config = {
@@ -89,31 +90,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
 
     // イベントオブジェクトを順次処理。
     req.body.events.forEach((event) => {
-        // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
-        if (event.type == "message" && event.message.type == "text"){
-            events_processed.push(
-                session_client.detectIntent({
-                    session: session_client.sessionPath(process.env.GOOGLE_PROJECT_ID, event.source.userId),
-                    queryInput: {
-                        text: {
-                            text: event.message.text,
-                            languageCode: "ja",
-                        }
-                    }
-                }).then((responses) => {
-                    if (responses[0].queryResult && responses[0].queryResult.action == "gomicounter"){
-                        let message_text = 'ゴミっていうなー';
-                        // if (responses[0].queryResult.parameters.fields.gomi.stringValue){
-                        //     message_text = `ごみっていうなーー！！`;
-                        // }
-                        return bot.replyMessage(event.replyToken, {
-                            type: "text",
-                            text: message_text
-                        });
-                    }
-                })
-            );
-        }
+
         if (event.type == "message" && event.message.type == "text"){
             // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
             if (event.message.text == "こんにちは"){
