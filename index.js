@@ -2,7 +2,7 @@
 // モジュールのインポート
 const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
-const dialogflow = require('dialogflow');
+require('date-utils');
 // -----------------------------------------------------------------------------
 // パラメータ設定
 const line_config = {
