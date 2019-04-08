@@ -29,11 +29,9 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
         if (event.type == "message" && event.message.type == "text"){
 
             if (event.message.text.match(/.*ゴミ.*/)){
-                //日付取得
-                let today = new Date().toFormat("MM/DD");
-                                
-                //0-6 = 月曜日ー日曜日
-                let dateOfWeek = today.getDay();
+
+                //曜日取得
+                let weekofday = new Date().getDate();
                 
                 //何週目か
                 let recode = event.recode;
@@ -42,30 +40,30 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                     var weekNum = Math.floor((m.date() - m.day() + 12) / 7);
                 }
 
-                if (dateOfWeek == 2 || dateOfWeek == 5){
+                if (weekofday == '月曜日' || weekofday == '木曜日'){
                     message_text = "今日は燃えるゴミの日です。";
                 }
                 if (weekNum == 1){
-                    if (dateOfWeek == 1){
+                    if (weekofday == 1){
                         message_text = "今日は燃えないゴミの日です";
                     }
                 }
                 if (weekNum == 2){
-                    if (dateOfWeek == 1){
+                    if (weekofday == 1){
                         message_text = "今日は紙・布類・ビン・缶の日です";
-                    } else if (dateOfWeek == 3){
+                    } else if (weekofday == 3){
                         message_text = "今日はペットボトルの日です";
                     }
                 }
                 if (weekNum == 3){
-                    if (dateOfWeek == 1){
+                    if (weekofday == 1){
                         message_text = "今日は燃えないゴミの日です";
                     }
                 }
                 if (weekNum == 4){
-                    if (dateOfWeek == 1){
+                    if (weekofday == 1){
                         message_text = "今日は紙・布類・ビン・缶の日です";
-                    } else if (dateOfWeek = 3){
+                    } else if (weekofday = 3){
                         message_text = "今日はペットボトルの日です";
                     }
                 }
