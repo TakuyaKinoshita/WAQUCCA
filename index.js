@@ -29,14 +29,24 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
         if (event.type == "message" && event.message.type == "text"){
 
             // if (event.message.text.match(/.*ゴミ.*/)){
+            if (event.message.text == "ゴミ") {
+
+                console.log("成功");
 
                 //日付取得
-                let today = new Date()
+                let today = new Date();
+                
+                console.log(today);
+                
                 //曜日取得
                 let weekofday = today.getDate();
 
+                console.log(weekofday);
+
                 //何回目の曜日取得
-                let weekNum = Math.floor((weekofday + 6) / 7)
+                let weekNum = Math.floor((weekofday + 6) / 7);
+
+                console.log(weekNum);
 
                 if (weekofday == 1 || weekofday == 4){
                     message_text = "今日は燃えるゴミの日です。";
@@ -72,6 +82,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
             // } else {
             //         message_text = `今日のごみが何の日か尋ねてみて？今日のごみが何のゴミを出す日なのか教えてくれるよ～^^`;
             // }
+            }
         }
     });
 
