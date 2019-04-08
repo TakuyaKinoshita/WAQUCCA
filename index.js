@@ -53,9 +53,7 @@
 // モジュールのインポート
 const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
-const { dialogflow } = require("actions-on-google");
-
-const apps = dialogflow({ debug: true });
+const dialogflow = require('dialogflow');
 // -----------------------------------------------------------------------------
 // パラメータ設定
 const line_config = {
@@ -71,7 +69,7 @@ server.listen(process.env.PORT || 3000);
 const bot = new line.Client(line_config);
 
 // Dialogflowのクライアントインスタンスを作成
-const session_client = new dialogflow.SessionsClient({
+const session_client = new app.SessionsClient({
     project_id: process.env.GOOGLE_PROJECT_ID,
     credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
