@@ -28,7 +28,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
 
         if (event.type == "message" && event.message.type == "text"){
 
-            if (event.message.text.match(/.*ゴミ.*/)){
+            // if (event.message.text.match(/.*ゴミ.*/)){
 
                 //日付取得
                 let today = new Date()
@@ -65,9 +65,9 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                         message_text = "今日は燃えないゴミの日です";
                     }
                 }
-            } else {
-                    message_text = `今日のごみが何の日か尋ねてみて？今日のごみが何のゴミを出す日なのか教えてくれるよ～^^`;
-            }
+            // } else {
+            //         message_text = `今日のごみが何の日か尋ねてみて？今日のごみが何のゴミを出す日なのか教えてくれるよ～^^`;
+            // }
         }
     });
 
