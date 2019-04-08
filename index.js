@@ -37,6 +37,8 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
 
                 console.log("成功");
 
+                let message_text;
+
                 //日付取得
                 let today = new Date();
                 
