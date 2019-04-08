@@ -65,10 +65,10 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                         message_text = "今日は燃えないゴミの日です";
                     }
                 }
-                return bot.replyMessage(event.replyToken, {
+                events_processed.push(bot.replyMessage(event.replyToken, {
                     type: "text",
                     text: message_text
-                });
+                }));
             // } else {
             //         message_text = `今日のごみが何の日か尋ねてみて？今日のごみが何のゴミを出す日なのか教えてくれるよ～^^`;
             // }
