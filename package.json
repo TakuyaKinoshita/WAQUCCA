@@ -12,6 +12,7 @@
   "dependencies": {
     "@line/bot-sdk": "^6.6.0",
     "actions-on-google": "^2.6.0",
+    "date-utils": "^1.2.21",
     "dialogflow": "^0.8.2",
     "express": "^4.16.4"
   }
