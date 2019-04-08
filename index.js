@@ -40,7 +40,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                 let message_text;
 
                 //日付取得
-                let today = new Date();
+                let today = new Date().toFormat(MM/DD);
                 
                 console.log(today);
 
