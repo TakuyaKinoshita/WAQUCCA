@@ -42,7 +42,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
         if (event.type == "message" && event.message.type == "text"){
             events_processed.push(
                 session_client.detectIntent({
-                    session: sessionClient.sessionPath(process.env.GOOGLE_PROJECT_ID, event.source.user_id),
+                    session: session_client.sessionPath(process.env.GOOGLE_PROJECT_ID, event.source.user_id),
                     queryInput: {
                         text: {
                             text: event.message.text,
