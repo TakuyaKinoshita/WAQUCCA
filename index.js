@@ -10,6 +10,10 @@ const line_config = {
     channelSecret: process.env.LINE_CHANNEL_SECRET // 環境変数からChannel Secretをセットしています
 };
 
+
+// APIコールのためのクライアントインスタンスを作成
+const bot = new line.Client(line_config);
+
 // -----------------------------------------------------------------------------
 // Webサーバー設定
 server.listen(process.env.PORT || 3000);
@@ -37,7 +41,7 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                 let today = new Date();
                 
                 console.log(today);
-                
+
                 //曜日取得
                 let weekofday = today.getDate();
 
